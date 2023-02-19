@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :email, :ddd_phone, :ddi_phone, :phone, presence: true
 
@@ -80,17 +83,25 @@ end
 #
 # Table name: users
 #
-#  id              :bigint(8)        not null, primary key
-#  first_name      :string
-#  last_name       :string
-#  birthday        :date
-#  email           :string
-#  ddi_phone       :string
-#  ddd_phone       :string
-#  phone           :string
-#  last_login      :datetime
-#  deleted_at      :datetime
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string
+#  id                     :bigint(8)        not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  birthday               :date
+#  email                  :string
+#  ddi_phone              :string
+#  ddd_phone              :string
+#  phone                  :string
+#  last_login             :datetime
+#  deleted_at             :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #

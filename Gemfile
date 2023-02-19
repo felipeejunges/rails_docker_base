@@ -69,3 +69,4 @@ gem 'smart_properties'
 gem 'mail', require: false
 gem 'mechanize'
 gem 'nokogiri'
+gem 'devise'

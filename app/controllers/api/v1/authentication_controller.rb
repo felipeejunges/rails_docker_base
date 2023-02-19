@@ -1,7 +1,6 @@
 module Api
   module V1
-    class AuthenticationController < ApplicationController
-      before_action :authenticate_request
+    class AuthenticationController < Devise::SessionsController
       skip_before_action :authenticate_request
 
       def authenticate
